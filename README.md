@@ -1,31 +1,60 @@
-<!--JavaScript conditional statement to find the largest of five number
-<!DOCTYPE html>
-<html>
-    <head>
-        <title›JavaScript conditional statement to find the largest of five numbers‹/title>
-    </head>
-    <body>
-        <script>
-             var num1 = 5;
-             var num2 = 10;
-             var num3 = -5;
-             var num4 = - 20;
-             var num5 = 1;
-             if (num1 ›num2 && num1>num3 && num1 ›num4 && num1 ›num5){
-                    document.writeln(num1);
-             }
-             else if (num2 ›num1 && num2 > num3 && num2 ›numa && num2 > num5){
-                     document.writeln(num2);
-             }
-             else if(num3 ›num1 && num3 ›num2 && num3 > num4 && num3 > num5){
-                     document.writeln(num3);
-             }
-             else if (num4> num1 && num > num2 && num4 ›num3 && num4 ›num5){
-                     document.writeln(num4);
-             }
-             else{
-                     document.writeln(num5);
-             }
-        </script>
-    </body>
-</html>
+package jdbcprogram1;
+
+public class multithreading implements Runnable{
+	
+	String name;
+	multithreading(String name1){
+		name=name1;
+	}
+	
+	@Override
+	public void run() {
+		for(int i=1;i<=10;i++)
+		// TODO Auto-generated method stub
+			
+		{		
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		System.out.println(name+":"+i);
+	}
+		
+	}
+
+	public static void main(String[] args) {
+	// TODO Auto-generated method stub
+
+	multithreading m1=new multithreading("thread1");
+	multithreading m2=new multithreading("thread2");
+	
+	Thread t1=new Thread(m1);
+	Thread t2=new Thread(m2);
+	
+	t1.start();
+	
+	
+	try {
+		t1.join();
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+	t2.start();
+	
+	try {
+		t2.join();
+	} catch (InterruptedException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	}
+	}
+
+//Java thread join method can be used to paused the current thread execution until unless the 
+//specified thread is dead.
